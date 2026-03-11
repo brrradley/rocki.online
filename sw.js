@@ -9,6 +9,27 @@
 const DB_NAME = "seedy";
 const DB_VERSION = 2; // bump so onupgradeneeded runs + we can create missing stores
 const KV_STORE = "kv";
+const CACHE_NAME = "rocki-v1";
+
+self.addEventListener("install", () => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys();
+
+      await Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key)),
+      );
+
+      await self.clients.claim();
+    })(),
+  );
+});
 
 self.addEventListener("push", (event) => {
   event.waitUntil(
