@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="160"
+  height="160"
+  viewBox="0 0 160 160"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <g
+    fill="#e5e7eb"
+    fill-opacity="0.03"
+    transform="rotate(45 80 80)"
+  >
+    <!-- Seed -->
+    <ellipse cx="80" cy="52" rx="10" ry="14" />
+
+    <!-- Stem -->
+    <rect x="78" y="66" width="4" height="26" rx="2" />
+
+    <!-- Left leaf -->
+    <path
+      d="
+        M78 76
+        C56 68, 36 72, 28 84
+        C44 88, 64 86, 78 80
+        Z
+      "
+    />
+
+    <!-- Right leaf -->
+    <path
+      d="
+        M82 76
+        C104 68, 124 72, 132 84
+        C116 88, 96 86, 82 80
+        Z
+      "
+    />
+  </g>
+</svg>
