@@ -6,7 +6,7 @@
  * - Broadcasts to open clients so Home can refresh instantly
  */
 
-const DB_NAME = "seedy";
+const DB_NAME = "rocki";
 const DB_VERSION = 2; // bump so onupgradeneeded runs + we can create missing stores
 const KV_STORE = "kv";
 const CACHE_NAME = "rocki-v1";
