@@ -1,6 +1,10 @@
 # ROCKI
 
 <p align="center">
+  <img src="./docs/images/rocki-overview.jpg" width="100%" alt="ROCKI overview showing dashboard, tools, game, builder and settings screens">
+</p>
+
+<p align="center">
   <strong>Rust Observation, Companion & Knowledge Interface</strong>
 </p>
 
@@ -59,78 +63,146 @@ The mascot represents accessibility, progression and community. It gives the pro
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img src="./docs/images/app-screens-pano.jpg" width="100%" alt="ROCKI app screen panorama">
+</p>
+
+---
+
 ## Features
 
 ### Live Server Dashboard
 
-The dashboard provides an immediate overview of a connected Rust Console Edition server.
+<p align="center">
+  <img src="./docs/images/dashboard.png" width="420" alt="ROCKI live server dashboard">
+</p>
 
-It includes live population tracking, server status monitoring, gather rates, loot rates, stack multipliers, event countdowns, APC tracking, locked crate timers, ZORP controls and starter kit access.
+The dashboard gives players an immediate overview of a connected Rust Console Edition server.
 
-The goal is to surface the information players usually ask for in Discord within seconds.
+It includes live population tracking, server status, gather rates, loot rates, stack multipliers, event countdowns, APC tracking, locked crate timers, starter kit access and server-specific services.
+
+The goal is simple: put the information players normally ask for in Discord directly in front of them.
+
+---
 
 ### Event Tracking
 
 ROCKI tracks important server events and presents them in a clean chronological feed.
 
-Current and planned event coverage includes:
+Current and planned event coverage includes Chinook, Attack Helicopter, Bradley APC, Locked Crates, Supply Drops, Oil Rig events and Cargo Ship.
 
-- Chinook
-- Attack Helicopter
-- Bradley APC
-- Locked Crates
-- Supply Drops
-- Cargo Ship
-- Oil Rig events
-- Future RCON-powered events
+The live event layer is designed around **Server-Sent Events**, keeping real-time updates lightweight and mobile friendly.
 
-The real-time layer is built around Server-Sent Events, giving the PWA live updates without the overhead of a heavier socket system.
+---
 
 ### Raid Calculator
 
-The raid calculator is designed specifically for Rust Console Edition values and real player decision-making.
+<p align="center">
+  <img src="./docs/images/raid-calculator.png" width="420" alt="ROCKI raid calculator">
+</p>
 
-It calculates sulfur requirements, cheapest raid routes, door paths, wall paths and defensive structures including turrets, SAM Sites and shotgun traps.
+The raid calculator helps players estimate sulfur requirements and compare raid routes.
 
-The goal is not just to show a number. The calculator recommends the practical route based on cost.
+It supports door paths, wall paths and defensive structures including turrets, SAM Sites and shotgun traps. The aim is not just to show a number, but to help players make the right decision quickly.
+
+---
 
 ### Smelting Calculator
 
-The smelting calculator helps players estimate processing time and fuel requirements.
+<p align="center">
+  <img src="./docs/images/cooking-calculator.png" width="420" alt="ROCKI smelting calculator">
+</p>
 
-It supports Furnace, Large Furnace and Electric Furnace calculations, with presets, completion estimates, wood requirements and reminder support.
+The smelting calculator estimates processing time and fuel requirements for Furnace, Large Furnace and Electric Furnace setups.
+
+It includes presets, resource inputs, estimated completion times, wood requirements and reminder support.
+
+---
 
 ### Base Builder
+
+<p align="center">
+  <img src="./docs/images/base-builder.jpg" width="420" alt="ROCKI base builder beta">
+</p>
 
 The base builder is an experimental mobile-first Rust CE building planner.
 
 Current features include foundation placement, wall placement, door frames, upgrade tiers, undo, redo, pan controls and piece selection.
 
-The long-term goal is a complete mobile-first base design experience that feels natural on a phone rather than being a desktop tool squeezed onto a small screen.
+The long-term goal is a complete base design experience that feels natural on a phone rather than a desktop tool squeezed onto a small screen.
+
+---
 
 ### Mapping System
 
-The mapping platform is one of the largest planned components of ROCKI.
+The mapping system is one of ROCKI's largest planned components.
 
 It is designed around custom markers, shared team markers, event markers, tactical overlays, team visibility, server map integration and future live teammate tracking.
 
-This system uses Leaflet and is being shaped around Rust Console Edition workflows rather than generic map tooling.
+The map tooling is shaped around Rust Console Edition workflows rather than generic map behaviour.
+
+---
 
 ### ZORP
 
-**Zoned Offline Raid Protection**
+**ZORP** stands for **Zoned Offline Raid Protection**.
 
-ZORP is a proprietary protection system being developed as part of the ROCKI ecosystem.
-
-The goal is to give participating server owners configurable offline raid protection mechanics while keeping the player experience simple.
+It is a proprietary protection system being developed as part of the ROCKI ecosystem, designed to give participating server owners configurable offline raid protection mechanics while keeping the experience simple for players.
 
 Current development includes activation controls, countdown timers, zone management, server-side administration and future token economy integration.
 
+---
+
 ### Service Monitoring
 
-ROCKI contains internal diagnostics used during development and testing.
+ROCKI includes internal diagnostics for development, testing and future server administration.
 
-The settings area tracks API availability, SSE connectivity, RCON status, service health and account linking so administrators and testers can immediately identify infrastructure issues.
+The settings area monitors API availability, SSE connectivity, RCON status, service health and account linking so issues can be identified quickly.
+
+---
+
+## Public Landing Page
+
+<p align="center">
+  <img src="./docs/images/landing-page.png" width="420" alt="ROCKI public landing page">
+</p>
+
+The public landing page introduces ROCKI as an installable Progressive Web App and explains how players can add it to their device home screen.
+
+---
+
+## Repository Layout
+
+This public repository is the deployed web presence for ROCKI.
+
+| Path | Purpose |
+| --- | --- |
+| `/index.html` | Public entry point for the deployed PWA. |
+| `/manifest.webmanifest` | PWA metadata, install behaviour and app icons. |
+| `/sw.js` | Service worker for installable/offline-friendly behaviour. |
+| `/assets/` | Built frontend JavaScript and CSS bundles. |
+| `/icons/` | ROCKI app icons and favicons. |
+| `/splash/` | iOS PWA splash screens. |
+| `/CNAME` | GitHub Pages custom domain for `rocki.online`. |
+| `/docs/images/` | README screenshots and documentation images. |
+
+---
+
+## Main Application Source Areas
+
+The active ROCKI application is organised around these feature areas:
+
+| Feature | Source Area |
+| --- | --- |
+| Dashboard | `apps/web/src/pages/Dashboard` |
+| Tools | `apps/web/src/pages/Tools` |
+| Game / Map | `apps/web/src/pages/Game` |
+| Builder | `apps/web/src/pages/Builder` |
+| Settings | `apps/web/src/pages/Settings` |
+| API | `apps/api` |
+| Database | `apps/api/prisma` |
 
 ---
 
@@ -164,29 +236,13 @@ ROCKI is built as a modern Progressive Web Application.
 
 ---
 
-## Source Areas
-
-| Feature | Source Area |
-| --- | --- |
-| Dashboard | `apps/web/src/pages/Dashboard` |
-| Tools | `apps/web/src/pages/Tools` |
-| Game / Map | `apps/web/src/pages/Game` |
-| Builder | `apps/web/src/pages/Builder` |
-| Settings | `apps/web/src/pages/Settings` |
-| API | `apps/api` |
-| Database | `apps/api/prisma` |
-
----
-
 ## Key Technical Decisions
 
 ### Server-Sent Events
 
-ROCKI uses Server-Sent Events for live updates.
+ROCKI uses Server-Sent Events for real-time updates.
 
-This keeps the real-time layer lightweight, mobile friendly and easier to operate than a heavier WebSocket stack for the current use case.
-
-SSE powers event tracking, notifications, live server updates and status changes.
+This keeps the live layer lightweight, mobile friendly and easier to operate than a heavier socket system for the current use case.
 
 ### Progressive Web App
 
@@ -206,18 +262,7 @@ ROCKI is designed touch-first, with large controls, simple cards and clear spaci
 
 ROCKI is being designed as a platform rather than a single application.
 
-Long-term objectives include:
-
-- Multi-server support
-- Team systems
-- Shared mapping
-- Discord integrations
-- Server administration tooling
-- Economy systems
-- Event automation
-- Premium server services
-- Community features
-- Advanced analytics
+Long-term objectives include multi-server support, team systems, shared mapping, Discord integrations, server administration tooling, economy systems, event automation, premium server services, community features and advanced analytics.
 
 The current private builds represent the foundation of a much larger ecosystem.
 
